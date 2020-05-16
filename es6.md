@@ -5,7 +5,6 @@
 > const命令：声明常量
 > let命令：声明变量
 
-
 > 作用
 
 - 作用域
@@ -23,14 +22,14 @@
 
 - 声明方法 `var`、`cosnt`、`let`、`function`、`class`、`import`
 
-
 > 重点
 
 + 不允许重复声明
-+ 未定义就使用会报错：`const命令`和`let命令`不存在变量的提升
-+ 暂时性死区：代码快内使用`const命令`或`let命令`声明变量之前，该变量都不可用
++ 未定义就使用会报错：`const命令` 和 `let命令` 不存在变量的提升
++ 暂时性死区：代码快内使用 `const命令` 或 `let命令` 声明变量之前，该变量都不可用
 
 ##### 解构赋值
+
 + 字符串解构：`const { a, b, b, d, e } = "hellow"`
 + 数值解构：`const { toString: a } = 0123456`
 + 布尔解构： `const { toSring: a } = false`
@@ -65,3 +64,71 @@
 - 解构不成功时变量的值等于 `undefined`
 - `undefined` 和 `null` 无法转为对象，因此无法进行解构
 
+##### 字符串扩展
+
+##### 数值扩展
+
+##### 数组扩展
+
++ 扩展运算符：转换数组为逗号分隔的参数系列（`[...arr]`，相当于 `reset/spead` 参数的逆运算）
++ Array.from()：转化具有 `Iterator接口` 的数据结构为真正的数组，返回新的数组
+    + 类数组对象：`包含length的对象`、`Aguments对象`、`NodeList对象` 
+    + 可遍历对象：`Sting`、`Set`、`Map`、`Generator函数`
++ Array.of()：转换一组值为真正数组，返回新数组
++ copyWithin()：把指定位置的成员复制到其他位置，返回原数组
++ find()：返回第一个符合条件的成员
++ findIndex()：返回第一个符合条件的乘员索引值
++ some()：对数组的每一项都运行给定的函数，如果该函数任意一项都返回 `true`，则返回 `true`
++ every()：对数组的每一项都运行给定的函数，如果该函数每一项都返回 `true`，则返回 `true`
++ map()：返回一个新的数组
++ filter()：返回所有符合条件的成员
++ fill()：根据指定值填充整个数组。返回原数组
++ keys()：返回以索引值为遍历器的对象
++ values(): 返回以属性值为遍历器的对象
++ entries()：返回以索引值和属性值为遍历器的对象
++ 数组空位：ES6明确将数组空位转为 `undefined（空位处理规则不一，建议避免出现）`
++ includes()：是否存在指定成员
+
+> 扩展应用
+
+* 克隆数组：`const arr = [...arr]`
+* 合并数组：`const arr = [...arr1, ...arr2]`
+* 拼接数组：`arr.push(...arr1)`
+* 代替apply：`Math.apply(null, [x, y]) => Math.max(...[x, y])`
+* 转换字符串为数组：`[...'hellow']`
+* 转换可遍历对象为数组：`[...Arguments, ...NodeList]`
+* 转换可遍历对象为数组：`[...String, ...Set, ...Map, ...Generator]`
+* 与数组解构赋值结合：`const [x, ...rest/spread] = [1, 2, 3]`
+* 计算Unicode字符长度：`Array.from('hellow).length => [...'hellow'].length`
+
+> 重点
+
+- 使用 `keys`、`values`、`entries` 返回的遍历器对象，可用 `for-of` 自动遍历或 `next()` 手动遍历
+
+##### 对象扩展
+
+##### 函数扩展
+
+##### 正则扩展
+
+##### 正则扩展
+
+##### Symbol
+
+##### Set
+
+##### Map
+
+##### Proxy
+
+##### reflect
+
+##### Class
+
+##### Module
+
+##### Iterator
+
+##### Promise
+
+##### Generator
