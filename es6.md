@@ -95,6 +95,29 @@
 - Number.EPSILON：数值最小精度
 - Number.min_SAFE_INTEGER：最小安全数值（-2^53）
 - Number.MAX_SAFE_INTEGER：最大安全数值（2^53）
+- Number.parseInt()：返回转换值得整数部分
+- Number.parseFloat()：返回转换值得浮点数部分
+- Number.isFinite()：是否为有限数值
+- Number.isInteger()：是否为整数
+- Number.isSafeInteger()：是否数值在安全返回内
+- Math.trunc()：返回数值整数部分
+- Math.sign()：返回数值类型（正数1、负数-1、零0）
+- Math.cbrt()：返回数值立方根
+- Math.clz32：返回数值的32位单精度浮点数形式
+- Math.imul()：返回两个数值相乘
+- Math.fround()：返回数值的32位单精度浮点数形式
+- Math.hypot()：返回所有数值平方和的平方根
+- Math.expm1()：返回 `e^n - 1`
+- Math.log1p()：返回 `1 + n` 的自然数对数（`Math.log(1 + n)`）
+- Math.log10()：返回10为底的n的对数
+- Math.log2()：返回以2为底的n的对数
+- Math.sinh()：返回n的双曲正弦
+- Math.cosh()：返回n的双曲余弦
+- Math.tanh()：返回n的双曲正切
+- Math.asinh()：返回n的反双曲正弦
+- Math.acosh()：返回n的反双曲余弦
+- Math.atanh()：返回n的反双曲正切
+- 指数幂运算符（**）：数值求幂（相当于Math.pow()）
 
 ##### 数组扩展
 
