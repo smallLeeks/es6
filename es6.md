@@ -158,6 +158,52 @@
 
 ##### 对象扩展
 
++ 简介表示发：直接写入变量和函数作为对象的属性和方法（`{ props, method() {} }`）
++ 属性名表达式：字面量定义对象时使用 `[]` 定义键（`[prop]`，不能与上同时使用）
++ 方法的name属性：返回方法函数名
+    + 取值函数（getter）和存值函数（setter）：`get/set函数名` (属性的描述对象在 `get` 和 `set` 上)
+    + bind返回的函数：`bound函数名`
+    + Function构造函数返回的函数实例：`anonymous`
++ 属性的可枚举性和遍历：描述对象的 `enumerable`
++ super关键字：指向当前对象的原型对象（只能用在对象的简写方法中 `methos() {}`）
++ `Object.is()`：对比两值是否相当（类似 `===`，但 `Object.is(NaN, NaN)` 为 `false`）
++ Object.assign()：合并对象（浅拷贝），返回原对象
++ Object.getPrototypeOf()：返回对象的原型对象
++ Object.setPrototypeOf()：设置对象的原型对象
++ `__proto__`：返回或设置最想的原型对象
++ Object.getOwnPropertyDescriptors()：返回对象所有自身属性（非继承属性）的描述对象
++ Object.values()：返回以数值组成的对象
++ Object.entries()：返回以键和值组成的数组
++ 扩展运算符：转换对象为用逗号分隔的参数序列（`{ ...obj }`，相当于 `rest/spread` 参数的逆运算）
++ Object.fromEntries()：返回以键和值组成的对象（`Object.entries()` 的逆操作）
++ 链判断操作符（?.）：是否存在对象属性（不存在返回 `undefined` 且不再往下执行）
+    + 对象属性：`obj?prop`、`obj?.[expr]`
+    + 函数调用：func?.(...args)
++ 空判断操作符（??）：是否值为 `undefined` 或 `null`，是则使用默认值
+
+> 属性遍历
+
++ 描述：`自身`、`可继承`、`可枚举`、`非枚举`、`Symbol`
++ 遍历：
+    + `for-in`：遍历对象 `自身可继承可枚举` 属性
+    + `Object.keys()`：返回对象 `自身可枚举` 属性键组成的数组
+    + `Object.getOwnPropertyNames()`：返回对象 `非自身Symbol` 属性键组成的数组
+    + `Object.getOwnPropertySymbols()`；返回对象 `自身Symbol` 属性键组成的数组
+    + `Reflect.ownKeys()`：返回对象 `自身全部` 属性键组成的数组
++ 规则：
+    + 首先遍历所有数值键，按照数值升序排列
+    + 其次遍历所有字符串键，按照加入时间升序排列
+    + 最后遍历所有Symbol键，按照加入时间升序排列
+
+> 扩展应用
+
++ 克隆对象：`const obj = { __proto__: Object.getPrototypeOf(obj1), ...obj1 }`
++ 合并对象：`const obj = { ..obj1, ...obj2 }`
++ 转换字符串为对象：`{ ..."hellow" }`
++ 转换数组为对象：`{ ...[1, 2] }`
++ 与对象解构赋值结合：`const { x, ...rest/spread } = { x: 1, y: 2, z: 3 }` 不能重复继承自身原型对象的属性
++ 修改现有对象部分属性：`const obj = { x：1, ...{ x: 2 } }`
+
 ##### 函数扩展
 
 ##### 正则扩展
