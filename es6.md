@@ -198,7 +198,7 @@
 > 扩展应用
 
 + 克隆对象：`const obj = { __proto__: Object.getPrototypeOf(obj1), ...obj1 }`
-+ 合并对象：`const obj = { ..obj1, ...obj2 }`
++ 合并对象：`const obj = { ...obj1, ...obj2 }`
 + 转换字符串为对象：`{ ..."hellow" }`
 + 转换数组为对象：`{ ...[1, 2] }`
 + 与对象解构赋值结合：`const { x, ...rest/spread } = { x: 1, y: 2, z: 3 }` 不能重复继承自身原型对象的属性
