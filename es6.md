@@ -226,4 +226,59 @@
 
 ##### Promise
 
++ 定义：包含异步操作结果的对象
++ 状态
+    + 进行中：`pending`
+    + 已成功：`resolved`
+    + 已失败：`rejected`
++ 特点：
+    + 对象的状态不受外界的影响
+    + 一旦状态改变就不会再变，任何时候都可以得到这个结果
++ 声明：`new Promise((resolve, reject) => {})`
++ 出参
+    + resolve：将状态从 `未完成` 变为 `成功`，在异步操作成功时调用，并将异步操作的结果作为参数传递出去
+    + reject: 状态将从 `未完成` 变为 `失败`，在异步操作失败时调用，并将异步操作的错误作为参数传递出去
++ 方法
+    + then()：分别指定 `resolved状态` 和 `rejected状态` 的回调函数
+        + 第一参数：状态变为 `resolved` 时调用
+        + 第二参数：状态变为 `rehected` 时调用（可选）
+    + catch()：指定发生错误时的回调函数
+    + Promise.all()：将多个实例包装成一个新实例，返回全部实例状态变更后的结果数组（齐变更再返回）
+        + 入参：具有 `Iterator接口` 的数据结构
+        + 成功：只有全部实例状态变成 `fulfilled`，最终状态才变成 `fulfilled`
+        + 失败：其中一个实例状态变成 `rejected`，最终状态就会变成 `rejected`
+    + promise.race()：将多个实例包装成一个新实例，返回全部实例状态优先变更后的结果（先变更先返回）
+        + 入参：具有 `Iterator接口` 的数据结构
+        + 成功失败：哪个实例率先改变状态就返回哪个实例的状态
+    + Promise.resolve()：将对象转为Promise对象(等价于 `new Promise(resolve => resolve())` )
+        + Promise实例：原封不动的返回入参
+        + Thenable对象：将此对象转为Promise对象并返回（Thenable为包含 `then()` 的对象，执行 `then()` 相当于执行此对象的 `then()`）
+        + 不具有 `then()` 的对象：将此对象转为Promise对象并返回，状态为 `resolved`
+        + 不带参数：返回Promise对象，状态为 `resoled`
+    + Promise.reject()：将对象转为状态为 `rejected` 的Promise对象（等价于 `new Promise((resolve, reject) => reject())`）
+
+> 应用场景
+
++ 加载图片
++ AJAX转为Promise对象
+
+> 重点难点
+
++ 只有异步操作的结果可决定当前状态是哪一种，其他操作都无法改变这个状态
++ 状态只有两种可能：从 `pending` 变为 `resolved`、从 `pending` 变为 `rejected`
++ 一旦新建 `Promise对象` 就会立即执行，无法中途取消
++ 不设置回调函数，内部抛错不会反应到外部
++ 当处于 `pending` 时，无法得知目前进展到哪一个阶段
++ 实例状态变为 `resolved` 或 `rejected` 时，会触发 `then()` 绑定的回调函数
++ `resolve()` 和 `reject()` 的执行总是晚于本轮循环的同步任务
++ `then()` 返回新实例，其后可再调用另一个 `then()`
++ `then()` 运行抛出错误会被 `catch()` 捕获
++ 实例状态已变成 `resolved` 时，再抛出错误是无效的，不会被捕获，等于没有输出
++ 实例状态的错误具有 `冒泡` 性质，会一直向后传递直到被捕获为止，错误总是会被下一个 `catch()` 捕获
++ 不要在 `then()` 里面定义 `rejected` 状态的回调函数（不要使用其第二参数）
++ 建议使用 `catch()` 捕获错误，不要使用 `then()` 第二个参数捕获
++ 没有使用 `catch()` 捕获错误，实例抛错不会传递到外层代码，即 `不会有任何反应`
++ 作为参数的实例定义了 `catch()`，一旦被 `rejected` 并不会触发 `Promise.all()` 的 `catch()`
++ `Promise.reject()` 参数会原封不动地作为 `rejected` 的理由，变成后续方法的参数
+
 ##### Generator
