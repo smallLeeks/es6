@@ -216,6 +216,23 @@
 
 ##### Proxy
 
++ 定义：修改某些操作的默认行为
++ 声明：`const proxy = new Proxy(target, handler)`
++ 入参：
+    + target：拦截的目标对象
+    + handler：定制拦截行为
++ 方法：
+    + Proxy.revocable()：返回可取消的Proxy实例（返回 `{ proxy, revoke} `，通过revoke()取消代理 ）
++ 拦截方式
+    + get()：拦截对象属性读取
+    + set()：拦截对象属性设置，返回布尔值
+    + has()：拦截对象属性检查 `key in obj`，返回布尔值
+    + deleteProperty()：拦截对象属性删除 `delete obj[k]`，返回布尔值
+    + defineProperty()：拦截对象属性定义 `Object.defineProperty()` 、Object.defineProperties()，返回布尔值
+    + ownKeys()：拦截对象属性遍历 `for-in`、`Object.keys()`、`Object.getOwnPropertyNames()`、`Object.getOwnpropertySymbols()`，返回数组
+    + getOwnpropertyDescriptor()：拦截对象属性描述读取Object.getOwnPropertyDescriptor，返回对象
+    + 
+
 ##### reflect
 
 ##### Class
