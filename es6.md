@@ -271,7 +271,7 @@
         + Promise实例：原封不动的返回入参
         + Thenable对象：将此对象转为Promise对象并返回（Thenable为包含 `then()` 的对象，执行 `then()` 相当于执行此对象的 `then()`）
         + 不具有 `then()` 的对象：将此对象转为Promise对象并返回，状态为 `resolved`
-        + 不带参数：返回Promise对象，状态为 `resoled`
+        + 不带参数：返回Promise对象，状态为 `resolved`
     + Promise.reject()：将对象转为状态为 `rejected` 的Promise对象（等价于 `new Promise((resolve, reject) => reject())`）
 
 > 应用场景
