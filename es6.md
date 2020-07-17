@@ -1,35 +1,27 @@
 ## ES6
 
 ##### 声明
-
 > const命令：声明常量
 > let命令：声明变量
-
 > 作用
-
 - 作用域
     - 全局作用域
     - 函数作用域
     - 块级作用域
-
 - 作用范围
     - `var命令` 在全局代码中执行
     - `const命令` 和 `let命令` 只能在代码块中执行
-
 - 赋值使用
     - `const命令` 声明常量后必须马上赋值
     - `let命令` 声明变量后可立马赋值或使用变量
-
 - 声明方法 `var`、`cosnt`、`let`、`function`、`class`、`import`
 
 > 重点
-
 + 不允许重复声明
 + 未定义就使用会报错：`const命令` 和 `let命令` 不存在变量的提升
 + 暂时性死区：代码快内使用 `const命令` 或 `let命令` 声明变量之前，该变量都不可用
 
 ##### 解构赋值
-
 + 字符串解构：`const { a, b, b, d, e } = "hellow"`
 + 数值解构：`const { toString: a } = 0123456`
 + 布尔解构： `const { toSring: a } = false`
@@ -46,7 +38,6 @@
     + 对象解构：`({x = 0, y = 1}) => {}`
 
 > 应用场景
-
 * 交换变量值：`[x, y] = [y, x]`
 * 返回函数多个值：`const [x, y, z] = ()`
 * 定义函数参数：`([1, 2])`
@@ -56,7 +47,6 @@
 * 输入模块指定属性和方法：`const { readFile, writeFile } = require('fs')`
 
 > 重点
-
 - 匹配模式：
 - 解构赋值规则：
 - 解构默认值生效条件：
@@ -85,11 +75,9 @@
 + trimEnd()：消除字符串尾部空格，返回新字符串
 
 > 重点
-
 + 以上扩展方法均可作用于由 `4个字节存储` 的 `Unicode字符` 上
 
 ##### 数值扩展
-
 - 二进制表示法：`0b或0B开头` 表示二进制（`0bXX` 或 `0BXX`）
 - 八进制表示法：`0o或0O开头` 表示八进制（`0oXX` 或 `0OXX`）
 - Number.EPSILON：数值最小精度
@@ -120,7 +108,6 @@
 - 指数幂运算符（**）：数值求幂（相当于Math.pow()）
 
 ##### 数组扩展
-
 + 扩展运算符：转换数组为逗号分隔的参数系列（`[...arr]`，相当于 `reset/spead` 参数的逆运算）
 + Array.from()：转化具有 `Iterator接口` 的数据结构为真正的数组，返回新的数组
     + 类数组对象：`包含length的对象`、`Aguments对象`、`NodeList对象` 
@@ -141,7 +128,6 @@
 + includes()：是否存在指定成员
 
 > 扩展应用
-
 * 克隆数组：`const arr = [...arr]`
 * 合并数组：`const arr = [...arr1, ...arr2]`
 * 拼接数组：`arr.push(...arr1)`
@@ -153,11 +139,9 @@
 * 计算Unicode字符长度：`Array.from('hellow).length => [...'hellow'].length`
 
 > 重点
-
 - 使用 `keys`、`values`、`entries` 返回的遍历器对象，可用 `for-of` 自动遍历或 `next()` 手动遍历
 
 ##### 对象扩展
-
 + 简介表示发：直接写入变量和函数作为对象的属性和方法（`{ props, method() {} }`）
 + 属性名表达式：字面量定义对象时使用 `[]` 定义键（`[prop]`，不能与上同时使用）
 + 方法的name属性：返回方法函数名
@@ -182,7 +166,6 @@
 + 空判断操作符（??）：是否值为 `undefined` 或 `null`，是则使用默认值
 
 > 属性遍历
-
 + 描述：`自身`、`可继承`、`可枚举`、`非枚举`、`Symbol`
 + 遍历：
     + `for-in`：遍历对象 `自身可继承可枚举` 属性
@@ -196,7 +179,6 @@
     + 最后遍历所有Symbol键，按照加入时间升序排列
 
 > 扩展应用
-
 + 克隆对象：`const obj = { __proto__: Object.getPrototypeOf(obj1), ...obj1 }`
 + 合并对象：`const obj = { ...obj1, ...obj2 }`
 + 转换字符串为对象：`{ ..."hellow" }`
@@ -205,9 +187,7 @@
 + 修改现有对象部分属性：`const obj = { x：1, ...{ x: 2 } }`
 
 ##### 函数扩展
-
 > 参数默认值：为函数参数指定默认值
-
 + 形式：`function func(x = 1, y = 2) {}`
 + 参数赋值：惰性求值（函数调用后才求值）
 + 参数位置：尾参数
@@ -220,24 +200,20 @@
     + 参数默认值设为 `undefined`，表明此参数可省略：`func(undefined, 1)`
 
 > rest/spread参数（...）：返回函数多余参数
-
 + 形式：以数组的形式存在，之后不能再有其他参数
 + 作用：代替 `Arguments对象`
 + length：返回没有指定默认值的参数个数但不包括 `rest/spread参数`
 
 > 严格模式：在严格条件下运行js
-
 + 应用：只要函数参数使用默认值、解构赋值、扩展运算符、那么函数内部就不能显示设定为严格模式
 
 > name属性：返回函数的函数名：
-
 + 将匿名函数赋值给变量：`空字符串(es5)`、`变量名（es6）`
 + 将具名函数赋值给变量：`函数名（es5和es6）`
 + bind返回的函数：`bind 函数名（es5和es6）`
 + Function构造函数返回的函数实例：`anonymous（es5和es6）`
 
 > 箭头函数（=>）：函数简写
-
 + 无参数：`() => {}`
 + 单个参数： `x => {}`
 + 多个参数：`(x, y) => {}`
@@ -248,14 +224,12 @@
     + 因为没有 `this`，因此不能用作构造函数
 
 > 尾调用优化：只保留内层函数的调用帧
-
 + 尾调用
     + 定义：某个函数的最后异步是调用另一个函数
     + 作用：只要使用尾部递归就不会发生栈溢出，相对节省内存
     + 实现：把所有用到的内部变量改写成函数的参数并使用参数默认值
 
 > 箭头函数误区
-
 + 函数体内的 `this` 是 `定义时所在的对象` 而不是 `使用时所在的对象`
 + 可让 `this` 指向固定化，这种特性很有利于封装回调函数
 + 不可当作 `构造函数`，因此箭头函数不可使用 `new`
@@ -264,34 +238,27 @@
 + 返回对象时必须在对象外面加上括号
 
 ##### 正则扩展
-
 + 变更RegExp构造函数入参：允许首参数为 `正则对象`，尾参数为 `正则修饰符` ( `返回的正则表达式会忽略原正则表达式的修饰符` )
-
 + 正则方法调用变更：字符串对象的 `match()`，`replace()`，`search()`，`split()` 内部调用转为调用 `RegExp` 实例对应的 `RegExp.prototype[symbol.方法]`
-
 + u修饰符：Unicode模式修饰符，正确处理大于 `\uFFF` 的 `Unicode字符`
-
 + `点字符（.）`
 + `Unicode表示法`
 + `量词`
 + `预定义模式`
 + `i修饰符`
 + `转义`
-
 + y修饰符：粘连修饰符，确保匹配必须从剩余的第一个位置开始全局匹配（与 `g修饰符` 作用类似）
 + unicode：是否设置 `u修饰符`
 + sticky：是否设置 `y修饰符`
 + flags：返回正则表达式的修饰符
 
 > 重点难点
-
 + `y修饰符` 隐含头部匹配标志
 + 单单一个 `y修饰符` 对 `match()` 只能返回第一个匹配，必须与 `g修饰符` 联用才能返回所有匹配
 
 ##### Symbol
 
 ##### Set
-
 + 定义：类似于数组的数据结构，成员值都是唯一且没有重复的值
 + 声明：`const set = new Set()`
 + 入参：具有 `Iterator接口` 的数据结构
@@ -309,22 +276,97 @@
     + forEach()：使用回调函数遍历每个成员
 
 > 应用场景
-
 + 去重字符串：`[...new Set(str)].join("")`
 + 去重数组：`[...new Set(arr)]` 或 `Array.from(new Set(arr))`
 + 集合数组：
     + 声明：`const a = new Set(arr1)、const b = new Set(arr2)`
-    + 并集：
-    + 交集：
-    + 差集：
+    + 并集：`new Set([...a, ...b])`
+    + 交集：`new Set([...a].filter(v => b.has(v)))`
+    + 差集：`new Set([...a].filter(v => !b.has(v)))`
 + 映射集合：
-    + 声明：
-    + 映射：
+    + 声明：`let set = new Set(arr)`
+    + 映射：`set = new Set([...set].map(v => v *2) 或 set = new Set(Array.from(set, v => v * 2)))`
+
+> 重点难点
++ 遍历顺序；插入顺序
++ 没有键只有值，可认为键和值两值相等
++ 添加多个 `NaN` 时，只会存在一个 `NaN`
++ 添加相同的对象时，会认为是不同的对象
++ 添加值时不会发生类型转换（`5 !== "5"`）
++ `keys()` 和 `values()` 的行为完全一致，返回的遍历器同事包括键和值且两值相等
+
+##### WeakSet
++ 定义：和Set结构类似，成员值只能是对象
++ 声明：`const set = new WeakSet(arr)`
++ 入参：具有 `Iterator` 接口的数据结构
++ 属性：
+    + constructor：构造函数，返回WrakSet
++ 方法：
+    + add()：添加值，返回实例
+    + delete()：删除值，返回布尔
+    + has()：检查值，返回布尔
+
+> 应用场景
++ 存储DOM节点；DOM节点被移除时自动释放此成员，不用担心这些节点从文档移除时会引发内存泄漏
++ 临时存放一组对象或存放限时对象绑定的信息：只要这些对象再外部消失，它在 `WeakSet` 结构中的引用久会自动消失
+
+> 重点难点：
++ 成员都是弱引用，垃圾回收机制不考虑 `WeakSet结构` 对此成员的引用
++ 成员不适合引用，它会随时消失，因此ES6规定 `WeakSet` 结构不可遍历
++ 其他对象不再引用成员时，垃圾回收机制会自动回收此成员所占用的内存，不考虑此成员是否还存在与 `WeakSet` 结构中
 
 ##### Map
++ 定义：类似与对象的数据结构，成员键时任何类型的值
++ 声明：`const set = new Map(arr)`
++ 入参：具有 `Iterator` 接口且每个成员都是一个双元素数组的数据结构
++ 属性：
+    + constructor：构造函数，返回Map
+    + size：返回实例成员总数
++ 方法：
+    + get()：返回键值对
+    + set()：添加键值对，返回实例
+    + delete()：删除键值对，返回布尔
+    + has()：检查键值对，返回布尔
+    + clear()：清除所有成员
+    + keys()：返回以键为遍历器的对象
+    + values()：返回以键位遍历器的对象
+    + entries()：返回以键和值为遍历器的对象
+    + forEach()：使用回调函数遍历每个成员
+
+> 重点难点：
++ 遍历顺序：插入顺序
++ 对于同一个键多次赋值，后面的值将覆盖前面的值
++ 对于同一个对象的引用，被视为一个键
++ 对于同样值得两个实例，被视为两个键
++ 键跟内存地址绑定，只要内存地址不一样就视为两个键
++ 添加多个以 `NaN` 作为键时，只会存在一个以 `NaN` 作为键的值
++ `Object` 结构提供 `字符串-值` 的对应，`Map` 结构提供 `值-值` 的对应
+
+##### WeakMap
++ 定义：和Map结构类似，成员键只能是对象
++ 声明：`const set = new WeakMap(arr)`
++ 入参：具有 `Iterator` 接口且每个成员都是一个双元素数组的结构
++ 属性：
+    + constructor: 构造函数，返回WeakMap
++ 方法：
+    + get()：返回键值对
+    + set()：添加键值对，返回实例
+    + delete()：删除键值对，返回布尔
+    + has()：检查键值对，返回布尔
+
+> 应用场景
++ 存储DOM节点：DOM节点被移除时自动释放此成员键，不用担心这些节点从文档移除时会引发内存泄漏
++ 部署私有属性：内部属性时实例的弱引用，删除实例时它们也随之消失，不会造成内存泄漏
+
+> 重点难点
++ 成员键都是弱引用，垃圾回收机制不考虑 `WeakMap结构` 对此成员键的引用
++ 成员键不适合引用，它会随时消失，因此ES6规定 `WeakMap` 结构不可遍历
++ 其他对象不再引用成员键时，垃圾回收机制会自动回收此成员所占用的内存，不考虑此成员是否还存在于 `WeakMap` 结构中
++ 一旦不再需要，成员会自动消失，不用手动删除引用
++ 弱引用的只是键而不是值，值依然是正常引用
++ 即使在外部消除了成员键的引用，内部的成员值依然存在
 
 ##### Proxy
-
 + 定义：修改某些操作的默认行为
 + 声明：`const proxy = new Proxy(target, handler)`
 + 入参：
@@ -343,6 +385,54 @@
     + 
 
 ##### reflect
++ 定义：保持 `Object` 方法的默认行为
++ 方法：
+    + get()：返回对象属性
+    + set()：设置对象属性，返回布尔
+    + has()：检查对象属性，返回布尔
+    + deleteProperty()：删除对象属性，返回布尔
+    + defineProperty()：定义对象属性，返回布尔
+    + ownKeys()：遍历对象属性，返回数组 (`Object.getOwnPropertyName()` + `Obejct.getOwnPropertySymbols()`)
+    + getOwnPropertyDescriptor()：返回对象属性描述，返回对象
+    + getPrototypeOf()：设置对象原型，返回布尔
+    + isExtensible()：返回对象是否可扩展，返回布尔
+    + preventExtensiond()：设置对象不可扩展，返回布尔
+    + apply()：绑定this后执行指定函数
+    + construct()：调用构造函数创建实例
+
+> 设计目的
++ 将 `object` 属于语言内部的方法放到 `Reflect` 上
++ 将某些Object方法报错情况改成返回 `false`
++ 让 `Object` 操作变成函数行为
++ `Proxy` 与 `Reflect` 相辅相成
+
+> 废弃方法
++ Object.defineProperty() => Reflect.defineProperty()
++ Object.getOwnPropertyDescriptor() => Reflect.getOwnPropertyDescriptor()
+
+> 重点难点
++ `Proxy` 方法和 `Reflect` 方法一一对应
++ `proxy` 和 `Reflect` 联合使用，前者负责拦截赋值操作，后者负责完成赋值操作
+
+> 数据绑定：观察者模式
+~~~
+const observerQueue = new Set();
+const observe = fn => observeQueue.add(fn);
+const observable = obj => new Proxy(obj, {
+  set(tgt, key, val, receiver) {
+    const result = Reflect.set(tge, key, val, receiver);
+    observerQueue.forEach(v => v());
+    return result;
+  }
+});
+const person = observable({
+  age: 25,
+  name: 'zs'
+});
+const print = () => console.log(`${person.name} is ${person.age} years old`);
+observe(print);
+person.name = 'Joway';
+~~~
 
 ##### Class
 
@@ -351,7 +441,6 @@
 ##### Iterator
 
 ##### Promise
-
 + 定义：包含异步操作结果的对象
 + 状态
     + 进行中：`pending`
@@ -384,12 +473,10 @@
     + Promise.reject()：将对象转为状态为 `rejected` 的Promise对象（等价于 `new Promise((resolve, reject) => reject())`）
 
 > 应用场景
-
 + 加载图片
 + AJAX转为Promise对象
 
 > 重点难点
-
 + 只有异步操作的结果可决定当前状态是哪一种，其他操作都无法改变这个状态
 + 状态只有两种可能：从 `pending` 变为 `resolved`、从 `pending` 变为 `rejected`
 + 一旦新建 `Promise对象` 就会立即执行，无法中途取消
